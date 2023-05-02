@@ -1,0 +1,27 @@
+{
+  "name": "nested-somments-system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "dev": "nodemon server.js",
+  "devDependencies": {
+    "nodemon": "^2.0.22",
+    "prisma": "^4.13.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.13.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  }
+}

@@ -1,0 +1,58 @@
+#root {
+  max-width: 1280px;
+  padding: 2rem;
+}
+.error {
+  color: red;
+}
+.replies {
+  flex: 1;
+}
+.comment-bar {
+  display: inline-block;
+  border: none;
+  outline: none;
+  width: 0px;
+  background: none;
+  cursor: pointer;
+  position: relative;
+  border-left: 1px solid red;
+}
+.comment-bar:focus,
+.comment-bar:active {
+  border-color: rosybrown;
+}
+
+.comment {
+  padding: 5px;
+  width: max-content;
+  width: 300px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+.comment .head {
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.icons-btn {
+  font-size: 0.8rem;
+  margin-top: 5px;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+.icons-btn:hover {
+  opacity: 0.8;
+}
+.comment-replies {
+  width: min-content;
+  display: flex;
+  justify-content: space-between;
+}
+.hide {
+  display: none;
+}
