@@ -6,17 +6,13 @@ function PostList() {
 
   if (loading) return <h1>Loading...</h1>;
 
-  if (error) return <h1>{error}</h1>;
-
-  console.log("err : ", error);
-  console.log("posts : ", posts);
-  console.log("loading : ", loading);
+  if (error) return <h1>{ error }</h1>;
 
   return (
     <div className="App">
-      {posts?.map(function (elt) {
-        return <PostItem key={elt.id} post={elt} />;
-      })}
+      { posts?.map(function (elt) {
+        return <PostItem key={ elt.id } post={ elt } />;
+      }) }
     </div>
   );
 }

@@ -5,18 +5,14 @@
 .error {
   color: red;
 }
-.replies {
-  flex: 1;
-}
-.comment-bar {
+/* .comment-bar {
   display: inline-block;
   border: none;
   outline: none;
-  width: 0px;
+  width: 20px;
   background: none;
   cursor: pointer;
-  position: relative;
-  border-left: 1px solid red;
+  border-left: 1px solid rgb(148 163 184);
 }
 .comment-bar:focus,
 .comment-bar:active {
@@ -25,8 +21,6 @@
 
 .comment {
   padding: 5px;
-  width: max-content;
-  width: 300px;
   border: 1px solid gray;
   border-radius: 5px;
   margin-bottom: 5px;
@@ -36,7 +30,7 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 5px;
-}
+} */
 .icons-btn {
   font-size: 0.8rem;
   margin-top: 5px;
@@ -48,11 +42,7 @@
 .icons-btn:hover {
   opacity: 0.8;
 }
-.comment-replies {
-  width: min-content;
-  display: flex;
-  justify-content: space-between;
-}
+
 .hide {
   display: none;
 }

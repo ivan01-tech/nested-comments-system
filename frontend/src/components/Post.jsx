@@ -46,22 +46,22 @@ function Post() {
 
   if (getpostLoading) return <h1>Loading...</h1>;
 
-  if (getPostError) return <h1>{getPostError}</h1>;
+  if (getPostError) return <h1>{ getPostError }</h1>;
 
   return (
-    <div>
-      <h1>{post?.title}</h1>
-      <p>{post?.body}</p>
-      <h3>Comments</h3>
-      {/* TODO onSubmit */}
+    <div className="my-5">
+      <h1 className="text-3xl">{ post?.title }</h1>
+      <p>{ post?.body }</p>
+      <h3 className="text-xl my-4">Comments</h3>
+      {/* TODO onSubmit */ }
       <FormComment
-        initialValue={""}
-        error={error}
-        loading={loading}
-        onSubmit={createCommentsHandler}
-        postId={id}
+        initialValue={ "" }
+        error={ error }
+        loading={ loading }
+        onSubmit={ createCommentsHandler }
+        postId={ id }
       />
-      {<CommentsList comments={rootComments} />}
+      { <CommentsList comments={ rootComments } /> }
     </div>
   );
 }

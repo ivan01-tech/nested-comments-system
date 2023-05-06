@@ -104,116 +104,115 @@ function Comment({ comment }) {
   const ShowReplyFormHandler = function (e) {
     setShowReplyorm((prev) => !prev);
   };
-
-  const formatedDate = getFormatedDate(comment?.createdAt);
-  // all replies to a comment
+  const date = new Date(comment?.createAt)
+  const formatedDate = getFormatedDate(date);
+  // all replies to a 
   const replies = getReplies(comment.id);
+
   return (
-    <div className="replies">
-      {/* comment itself */}
-      <div className="comment">
-        <div className="head">
-          <span> {comment.user.name}</span>
-          <span> {formatedDate}</span>
+    <div className="w-full flex flex-col">
+      {/* comment itself */ }
+      <div className=" p-2 border border-gray-400 w-full max-w-[500px] mt-1">
+        <div className="text-[.8rem] flex justify-between mb-1">
+          <span> { comment.user.name }</span>
+          <span> { formatedDate }</span>
         </div>
 
-        {/* show the message or the form to update it */}
+        {/* show the message or the form to update it */ }
         <div>
-          {showUpdateForm ? (
+          { showUpdateForm ? (
             <FormComent
-              autoFocus={true}
-              loading={updateCommentState.loading}
-              error={updateCommentState.error}
-              initialValue={comment?.message}
-              onSubmit={updateCommentHnadler}
+              autoFocus={ true }
+              loading={ updateCommentState.loading }
+              error={ updateCommentState.error }
+              initialValue={ comment?.message }
+              onSubmit={ updateCommentHnadler }
             />
           ) : (
             comment.message
-          )}
+          ) }
         </div>
 
         <div>
           <IconBtn
-            disabled={toogleLikeCommentState.loading}
-            Icon={comment?.likeByMe ? FaHeart : FaRegHeart}
-            aria-label={comment?.likeByMe ? "Unlike" : "Like"}
-            color={"red"}
-            onClick={toogleCommentHandler}
+            disabled={ toogleLikeCommentState.loading }
+            Icon={ comment?.likeByMe ? FaHeart : FaRegHeart }
+            aria-label={ comment?.likeByMe ? "Unlike" : "Like" }
+            onClick={ toogleCommentHandler }
           >
-            {comment?.likesCount}
+            { comment?.likesCount }
           </IconBtn>
 
           <IconBtn
-            Icon={FaReply}
-            color={"red"}
+            Icon={ FaReply }
             aria-label="Reply"
-            isActive={showReplyorm}
-            onClick={ShowReplyFormHandler}
-            title={"reply to this comment"}
+            isActive={ showReplyorm }
+            onClick={ ShowReplyFormHandler }
+            title={ "reply to this comment" }
           />
           <IconBtn
-            isActive={showUpdateForm}
-            Icon={FaEdit}
-            color={"red"}
+            isActive={ showUpdateForm }
+            Icon={ FaEdit }
             aria-label="Edit"
-            onClick={ShowUpdateFormHandler}
-            title={"rdit this comment"}
+            onClick={ ShowUpdateFormHandler }
+            title={ "rdit this comment" }
           />
           <IconBtn
-            Icon={FaTrash}
-            color={"red"}
+            Icon={ FaTrash }
+            color={ "red" }
             aria-label="Delete"
-            onClick={deleteCommentHnadler}
-            disabled={deleteCommentState.loading}
+            onClick={ deleteCommentHnadler }
+            disabled={ deleteCommentState.loading }
           />
         </div>
-        {/* show errors messages */}
-        {deleteCommentState?.error ? (
+        {/* show errors messages */ }
+        { deleteCommentState?.error ? (
           deleteCommentState?.error?.message ? (
-            <div className="error">{deleteCommentState.error?.message}</div>
+            <div className="error">{ deleteCommentState.error?.message }</div>
           ) : (
-            <div className="error">{deleteCommentState.error}</div>
+            <div className="error">{ deleteCommentState.error }</div>
           )
         ) : (
           ""
-        )}
-        {/* show errors messages */}
-        {deleteCommentState.error && (
-          <div className="error">{deleteCommentState.loading}</div>
-        )}
-        {/* show errors messages */}
-        {toogleLikeCommentState.error && (
-          <div className="error">{deleteCommentState.loading}</div>
-        )}
+        ) }
+        {/* show errors messages */ }
+        { deleteCommentState.error && (
+          <div className="error">{ deleteCommentState.loading }</div>
+        ) }
+        {/* show errors messages */ }
+        { toogleLikeCommentState.error && (
+          <div className="error">{ deleteCommentState.loading }</div>
+        ) }
       </div>
 
-      {/* form to reply to a comment */}
-      {showReplyorm ? (
+      {/* form to reply to a comment */ }
+      { showReplyorm ? (
         <FormComent
-          error={replyCommentState.error}
-          loading={replyCommentState.loading}
-          autoFocus={true}
-          onSubmit={replyCommentHnadler}
+          error={ replyCommentState.error }
+          loading={ replyCommentState.loading }
+          autoFocus={ true }
+          onSubmit={ replyCommentHnadler }
         />
       ) : (
         ""
-      )}
+      ) }
 
-      {/* comments replies */}
-      <section>
-        <div className={`comment-replies ${!areChidrenShow ? "" : "hide"}`}>
-          {replies && replies.length && (
+      {/* comments replies */ }
+      <section className="">
+        <div className={ ` flex gap-1 ${!areChidrenShow ? "" : "hidden"}` }>
+          { replies && replies.length && (
             <button
               title="collapse comments"
-              className="comment-bar"
-              onClick={ShowOrHideChildren}
+              className="inline-block border-l w-4 border-gray-400 border-none cursor-pointer bg-none focus:border-slate-400 active:border-slate-400 "
+              onClick={ ShowOrHideChildren }
             />
-          )}
-
-          <div>{<CommentsList comments={replies} />}</div>
+          ) }
+          <div className="w-full">
+            { <CommentsList comments={ replies } /> }
+          </div>
         </div>
-        <button hidden={!areChidrenShow} onClick={ShowOrHideChildren}>
-          Shows replies
+        <button className="border border-white p-1" hidden={ !areChidrenShow } onClick={ ShowOrHideChildren }>
+          Show replies
         </button>
       </section>
     </div>

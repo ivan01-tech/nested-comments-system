@@ -16,19 +16,20 @@ function FormComent({ onSubmit, initialValue, error, loading, autoFocus }) {
   };
 
   return (
-    <form onSubmit={SubmitHandler}>
-      <div>
+    <form onSubmit={ SubmitHandler } className="">
+      <div className="flex items-center gap-1">
         <textarea
+          className="bg-slate-500 p-2 text-black"
           id="message"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          autoFocus={autoFocus}
+          value={ message }
+          onChange={ (e) => setMessage(e.target.value) }
+          autoFocus={ autoFocus }
         ></textarea>
-        <button disabled={loading} type="submit">
-          {loading ? "Loading..." : "Post"}
+        <button disabled={ loading } type="submit" className="px-2 border">
+          { loading ? "Loading..." : "Post" }
         </button>
       </div>
-      <div className="error">{error}</div>
+      <div className="error">{ error }</div>
     </form>
   );
 }
